@@ -1,0 +1,62 @@
+type: edu
+files:
+- name: tests.py
+  visible: false
+  text: |
+    from hstest import StageTest, TestedProgram, CheckResult, dynamic_test
+
+
+    class ExamTest(StageTest):
+        @dynamic_test
+        def test_sum(self):
+            pr = TestedProgram()
+            pr.start()
+            output = pr.execute("5 + 2").lower().strip()
+            check = output == "7" or output == "7.0"
+            return CheckResult(check, 'Wrong result found for "+" operation.')
+
+        @dynamic_test
+        def test_mult(self):
+            pr = TestedProgram()
+            pr.start()
+            output = pr.execute("11 * 3").lower().strip()
+            check = output == "33" or output == "33.0"
+            return CheckResult(check, 'Wrong result found for "*" operation.')
+
+        @dynamic_test
+        def test_substraction(self):
+            pr = TestedProgram()
+            pr.start()
+            output = pr.execute("10 - 3").lower().strip()
+            check = output == "7" or output == "7.0"
+            return CheckResult(check, 'Wrong result found for "-" operation.')
+
+
+    if __name__ == '__main__':
+        ExamTest().run_tests()
+  learner_created: false
+- name: arithmetic.py
+  visible: true
+  text: |
+    # write your code here
+  learner_created: false
+feedback_link: https://hyperskill.org/projects/173/stages/893/implement#comment
+status: Failed
+feedback:
+  message: |-
+    Exception in test #1
+
+    Traceback (most recent call last):
+      File "arithmetic.py", line 11, in <module>
+        user_solution = int(input())
+    ValueError: invalid literal for int() with base 10: '5 + 2'
+
+    Please find below the output of your program during this failed test.
+    Note that the '>' character indicates the beginning of the input line.
+
+    ---
+
+    4 + 7
+    > 5 + 2
+  time: Fri, 17 Jun 2022 06:06:36 UTC
+record: 1
